@@ -9,6 +9,11 @@
 // @updateURL   https://github.com/etihwnad/blackboard-userscripts/raw/master/blackboard-group-search.user.js
 // ==/UserScript==
 
+// 95% from https://github.com/Mortal/bbdyn/blob/master/bbdyn.user.js
+// (TODO: howto better attribute ??)
+// with changes for my situation
+// +prefixes the course name to the document title
+
 'use strict';
 
 var LANG = document.documentElement.lang;
@@ -480,6 +485,7 @@ amendMenu();
 //    window.top.document.title = title;
 //}
 
+// better way to access the "courseTitle" js var?
 var courseTitle = unsafeWindow.courseTitle;
 if(courseTitle) {
     var splits = courseTitle.split('-');
