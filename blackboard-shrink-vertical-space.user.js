@@ -36,12 +36,11 @@ GM_addStyle(".secondaryButton h2 a{ padding-top:2px; padding-bottom:2px; }");
 GM_addStyle("#quick_links_wrap { top: 0px; }");
 
 
-
 // adjust contentFrame height by net change to navFrame from above
+// TODO: how to calculate this number on the fly??
 var frame = document.getElementById("contentFrame");
-var newHeight = frame.offsetHeight + 64;
-frame.style.height = newHeight + 'px'
-
-
-
+if (frame && "offsetHeight" in frame) {
+    var newHeight = frame.offsetHeight + 60;
+    frame.style.height = newHeight + 'px';
+}
 
