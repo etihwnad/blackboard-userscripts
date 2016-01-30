@@ -3,7 +3,7 @@
 // @namespace   http://users-cs.au.dk/rav/bbdyn-dev/
 // @description Adds live filtering and search form redisplay
 // @include     https://blackboard.valpo.edu/webapps/*
-// @version     0.6pre2
+// @version     0.7
 // @grant       GM_xmlhttpRequest
 // @grant       GM_log
 // @updateURL   https://github.com/etihwnad/blackboard-userscripts/raw/master/blackboard-group-search.user.js
