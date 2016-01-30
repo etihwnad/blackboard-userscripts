@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Blackboard: shrink vertical top space
 // @namespace    http://www.whiteaudio.com/
-// @downloadURL  http://www.whiteaudio.com/util/blackboard-shrink-vertical-space.user.js
-// @version      0.5
+// @downloadURL  https://github.com/etihwnad/blackboard-userscripts/raw/master/blackboard-shrink-vertical-space.user.js
+// @version      0.6
 // @description  Remove the top banner and shrink vertical blank space
 // @author       You
 // @match        https://blackboard.valpo.edu/webapps/*
