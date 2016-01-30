@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name        BlackBoard improvements
-// @namespace   http://users-cs.au.dk/rav/
+// @name        BlackBoard group user search and better page title
+// @namespace   http://users-cs.au.dk/rav/bbdyn-dev/
 // @description Adds live filtering and search form redisplay
 // @include     https://blackboard.valpo.edu/webapps/*
-// @version     0.6
+// @version     0.6pre1
 // @grant       GM_xmlhttpRequest
 // @grant       GM_log
-// @updateURL   https://github.com/Mortal/bbdyn/raw/stable/bbdyn.user.js
+// @updateURL   https://github.com/etihwnad/blackboard-userscripts/raw/master/blackboard-group-search.user.js
 // ==/UserScript==
 
 'use strict';
@@ -22,6 +22,7 @@ if (LANG.substring(0, 2) === 'en') {
         'export_group_list': 'Export group list',
         'csv_username_header': 'Username',
         'csv_groups_header': 'Group',
+        'csv_name_header': 'Name',
         '': ''
     };
 } else {
@@ -34,6 +35,7 @@ if (LANG.substring(0, 2) === 'en') {
         'export_group_list': 'Eksporter gruppeliste',
         'csv_username_header': 'Brugernavn',
         'csv_groups_header': 'Gruppe',
+        'csv_name_header': 'Navn',
         '': ''
     };
 }
@@ -303,9 +305,33 @@ function extract_groups(users) {
     return groups;
 }
 
+function csv_username(user) {
+    return user.username;
+}
+csv_username.header = TR.csv_username_header;
+function csv_groups(user) {
+    return user.groups.join(' ');
+}
+csv_groups.header = TR.csv_groups_header;
+function csv_name(user) {
+    return user.first + ' ' + user.last;
+}
+csv_name.header = TR.csv_name_header;
+
 function add_export_group_list(form, users) {
+    function get_column_header(column) {
+        return column.header;
+    }
+    function get_column_value(user) {
+        function f(column) {
+            return column(user);
+        }
+        return f;
+    }
+
     var s = [];
-    s.push([TR.csv_username_header, TR.csv_groups_header].join('\t'));
+    var columns = [csv_username, csv_name, csv_groups];
+    s.push(columns.map(get_column_header).join('\t'));
     for (var i = 0; i < users.length; ++i) {
         var special_roles = [
             'Instructor', 'Teaching Assistant',
@@ -319,7 +345,8 @@ function add_export_group_list(form, users) {
             // Hide users in no groups
             continue;
         }
-        s.push([users[i].username, users[i].groups.join(' ')].join('\t'));
+
+        s.push(columns.map(get_column_value(users[i])).join('\t'));
     }
     var url = 'data:text/plain;base64,' + btoa(s.join('\n'));
 
