@@ -2,7 +2,7 @@
 // @name         Blackboard: shrink vertical top space
 // @namespace    http://www.whiteaudio.com/
 // @downloadURL  https://github.com/etihwnad/blackboard-userscripts/raw/master/blackboard-shrink-vertical-space.user.js
-// @version      0.7
+// @version      0.8
 // @description  Remove the top banner and shrink vertical blank space
 // @author       You
 // @match        https://blackboard.valpo.edu/webapps/*
@@ -38,6 +38,9 @@ GM_addStyle("#quick_links_wrap { top: 0px; }");
 
 // gradebook cells
 GM_addStyle(".gbtable tbody tr td, .gbtable tbody tr th, .gbtable_header th, .gbtable thead th { padding:0px !important; }");
+
+// group listing cells
+GM_addStyle(".inventory tbody tr td, .inventory tbody tr th, .inventory thead th { padding:0px !important; }");
 
 // adjust contentFrame height by net change to navFrame from above
 // TODO: how to calculate this number on the fly??
