@@ -2,7 +2,7 @@
 // @name         Blackboard: shrink vertical top space
 // @namespace    http://www.whiteaudio.com/
 // @updateURL  https://github.com/etihwnad/blackboard-userscripts/raw/master/blackboard-shrink-vertical-space.user.js
-// @version      0.10
+// @version      0.11
 // @description  Remove the top banner and shrink vertical blank space
 // @author       You
 // @match        https://blackboard.valpo.edu/webapps/*
@@ -28,7 +28,9 @@ GM_addStyle("#breadcrumbs { padding-top:0px; padding-bottom:0px; }");
 GM_addStyle("#pageTitleDiv { padding-top:2px; padding-bottom:2px; }");
 GM_addStyle(".pageTitle { margin:0px !important; }");
 GM_addStyle(".searchbar { padding:0px !important; }");
-GM_addStyle("#containerdiv.container { padding:0px; margin:0px }");
+GM_addStyle("#containerdiv.container { padding:5px; margin:5px; }");
+GM_addStyle(".contentList { margin:0px; }");
+GM_addStyle(".contentList li { padding:10px 10px; }");
 
 GM_addStyle(".mainButton a{ padding-top:2px; padding-bottom:2px; }");
 GM_addStyle(".mainButton h2 a{ padding-top:2px; padding-bottom:2px; }");
