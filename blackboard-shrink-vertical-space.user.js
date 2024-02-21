@@ -2,7 +2,7 @@
 // @name         Blackboard: shrink vertical top space
 // @namespace    http://www.whiteaudio.com/
 // @updateURL  https://github.com/etihwnad/blackboard-userscripts/raw/master/blackboard-shrink-vertical-space.user.js
-// @version      0.11
+// @version      0.12
 // @description  Remove the top banner and shrink vertical blank space
 // @author       You
 // @match        https://blackboard.valpo.edu/webapps/*
@@ -43,6 +43,9 @@ GM_addStyle("#quick_links_wrap { top: 0px; }");
 
 // gradebook cells
 GM_addStyle(".gbtable tbody tr td, .gbtable tbody tr th, .gbtable_header th, .gbtable thead th { padding:0px !important; }");
+
+// gradebook column headers
+GM_addStyle(".gbtable_header th { text-transform: none;}");
 
 // group listing cells
 GM_addStyle(".inventory tbody tr td, .inventory tbody tr th, .inventory thead th { padding:0px !important; }");
