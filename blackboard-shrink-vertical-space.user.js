@@ -2,7 +2,8 @@
 // @name         Blackboard: shrink vertical top space
 // @namespace    http://www.whiteaudio.com/
 // @updateURL  https://github.com/etihwnad/blackboard-userscripts/raw/master/blackboard-shrink-vertical-space.user.js
-// @version      0.12
+// @downloadURL  https://github.com/etihwnad/blackboard-userscripts/raw/master/blackboard-shrink-vertical-space.user.js
+// @version      0.13
 // @description  Remove the top banner and shrink vertical blank space
 // @author       You
 // @match        https://blackboard.valpo.edu/webapps/*
@@ -50,6 +51,7 @@ GM_addStyle(".gbtable_header th { text-transform: none;}");
 // group listing cells
 GM_addStyle(".inventory tbody tr td, .inventory tbody tr th, .inventory thead th { padding:0px !important; }");
 
+/*
 // adjust contentFrame height by net change to navFrame from above
 // TODO: how to calculate this number on the fly??
 var frame = document.getElementById("contentFrame");
@@ -57,4 +59,8 @@ if (frame && "offsetHeight" in frame) {
     var newHeight = frame.offsetHeight + 60;
     frame.style.height = newHeight + 'px';
 }
+*/
+
+// Trigger a resize event to recalculate the Grade Center vertical height
+window.dispatchEvent(new Event('resize'));
 
